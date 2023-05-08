@@ -1,19 +1,22 @@
-function BubbleSort(arr:number[]):void{
-    let j = 0;
-    while(j<arr.length){
-        for(let i=0; i<arr.length; i++){
-            if(arr[i]>arr[i+1]){
-                let tmp=arr[i];
-                arr[i]=arr[i+1];
-                arr[i+1]=tmp;
-            }
-        }
-        j++;
+function BubbleSort(arr:number[]):number[]{
+  let bound = arr.length;
+  let i = 0;
+  while(i<bound){
+    for(let j=0; j<arr.length; ++j){
+      if(arr[j+1]<arr[j]){
+        let tmp = arr[j+1];
+        arr[j+1] = arr[j];
+        arr[j] = tmp;
+      }
     }
-    console.log(arr);
+    bound-=1;
+    i+=1;
+  }
+  return arr;
 }
 
-let arr = [1,2,4,5,3,7,123,134,5,234,5,12,45,75,6,34,67,84,679,5,65,8679];
+let arr = [23,1,54,2,7,4,3];
+console.log("Given Array: ", arr);
 console.time("test_timer");
-BubbleSort(arr);
+console.log("Sorted Array", BubbleSort(arr));
 console.timeEnd("test_timer");
